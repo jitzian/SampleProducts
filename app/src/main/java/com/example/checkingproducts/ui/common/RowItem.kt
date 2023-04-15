@@ -26,7 +26,7 @@ fun RowItem(data: ProductsItem, onItemClick: (Int) -> Unit) {
                 vertical = dimensionResource(id = R.dimen.dimen_8_dp)
             )
             .clickable {
-                //onItemClick.invoke()
+                onItemClick.invoke(data.id.toInt())
             },
         elevation = dimensionResource(id = R.dimen.dimen_4_dp)
     ) {
@@ -39,7 +39,6 @@ fun RowItem(data: ProductsItem, onItemClick: (Int) -> Unit) {
                     end = dimensionResource(id = R.dimen.dimen_8_dp)
                 )
         ) {
-            //ProductImage(name = data.name, url = data.url)
             ProductImage(name = data.name, url = data.url ?: "")
             Text(
                 text = data.current_value,
