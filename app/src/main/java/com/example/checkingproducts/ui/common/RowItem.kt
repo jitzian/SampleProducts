@@ -16,7 +16,7 @@ import com.example.checkingproducts.R
 import com.example.checkingproducts.data.remote.model.ProductsItem
 
 @Composable
-fun RowItem(data: ProductsItem, onItemClick: () -> Unit) {
+fun RowItem(data: ProductsItem, onItemClick: (Int) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -26,7 +26,7 @@ fun RowItem(data: ProductsItem, onItemClick: () -> Unit) {
                 vertical = dimensionResource(id = R.dimen.dimen_8_dp)
             )
             .clickable {
-                onItemClick.invoke()
+                //onItemClick.invoke()
             },
         elevation = dimensionResource(id = R.dimen.dimen_4_dp)
     ) {
@@ -53,7 +53,8 @@ fun RowItem(data: ProductsItem, onItemClick: () -> Unit) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(bottom = dimensionResource(id = R.dimen.dimen_8_dp)),
-                style = MaterialTheme.typography.caption
+                style = MaterialTheme.typography.caption,
+                maxLines = 1
             )
         }
 
