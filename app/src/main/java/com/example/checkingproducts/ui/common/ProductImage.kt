@@ -22,17 +22,17 @@ fun ProductImage(url: String, name: String) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.Gray)
+            .background(Color.LightGray)
     ) {
         Image(
             painter = rememberImagePainter(data = url),
             contentDescription = name,
+            contentScale = ContentScale.Inside,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(all = dimensionResource(id = R.dimen.dimen_6_dp))
                 .aspectRatio(1f)
-                .clip(RoundedCornerShape(dimensionResource(id = R.dimen.dimen_4_dp))),
-            contentScale = ContentScale.FillBounds
+                .clip(RoundedCornerShape(dimensionResource(id = R.dimen.dimen_4_dp)))
         )
     }
 }
