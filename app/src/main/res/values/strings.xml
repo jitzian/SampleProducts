@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CheckingProducts</string>
+    <string name="back_TEXT">Back</string>
+    <string name="loading_dot_dot_dot_TEXT">Loading…</string>
 </resources>
