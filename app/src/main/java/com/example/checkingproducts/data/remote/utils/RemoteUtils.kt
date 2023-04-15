@@ -11,7 +11,6 @@ import okhttp3.OkHttpClient
 object RemoteUtils {
 
     var mockedContent: String = ""
-
     fun readMockedContent(context: Context) {
         val inputStream = context.assets.open("mocks/products.json")
         val size: Int = inputStream.available()
