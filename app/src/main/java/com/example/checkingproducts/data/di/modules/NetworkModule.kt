@@ -2,8 +2,6 @@ package com.example.checkingproducts.data.di.modules
 
 import com.example.checkingproducts.data.remote.RestApi
 import com.example.checkingproducts.data.remote.utils.RemoteUtils
-import com.google.gson.FieldNamingPolicy
-import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,14 +24,6 @@ class NetworkModule {
     @Singleton //Scope of the instance
     fun providesRetrofit(): RestApi {
 
-        val gson = GsonBuilder()
-            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-            .create()
-
-        /*val client: OkHttpClient = OkHttpClient.Builder()
-            .addInterceptor(RequestInterceptor(getAssets()))
-            .build()*/
-
         val interceptor = Interceptor { chain ->
             val uri = chain.request().url.toUri().toString()
             val responseString =
@@ -49,19 +39,14 @@ class NetworkModule {
         }
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(interceptor)
-//            .addInterceptor(MockRequestInterceptor())
             .build()
 
         return Retrofit.Builder()
             .baseUrl("https://api/")
-//            .baseUrl("https://example.com/api/")
-            //.addConverterFactory(GsonConverterFactory.create(gson))
             .client(okHttpClient)
-//            .client(RemoteUtils.okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(RestApi::class.java)
-
     }
 
     // Helper function to read the mock response from the file
