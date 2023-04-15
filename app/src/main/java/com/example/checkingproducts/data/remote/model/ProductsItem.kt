@@ -6,5 +6,5 @@ data class ProductsItem(
     val id: String,
     val name: String = "",
     val terms: String = "",
-    val url: String? = ""
+    val url: String? = "https://upload.wikimedia.org/wikipedia/commons/0/0a/No-image-available.png"
 )
