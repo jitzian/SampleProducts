@@ -3,7 +3,6 @@ package com.example.checkingproducts.ui.screens.main.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.checkingproducts.data.domain.repository.product.ProductRepository
-import com.example.checkingproducts.data.domain.repository.products.ProductsRepository
 import com.example.checkingproducts.data.domain.repository.services.offline.toProductEntityDB
 import com.example.checkingproducts.data.remote.model.ProductsItem
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +16,6 @@ import kotlin.time.Duration.Companion.seconds
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    //private val productsRepository: ProductsRepository,
     private val productRepository: ProductRepository
 ) : ViewModel() {
 
