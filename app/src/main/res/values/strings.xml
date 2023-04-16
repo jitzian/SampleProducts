@@ -7,4 +7,5 @@
     <string name="scroll_down_TEXT">Scroll down</string>
     <string name="favorite_TEXT">Favorite</string>
     <string name="not_favorite_TEXT">Not Favorite</string>
+    <string name="there_is_no_data_TEXT">There is no data</string>
 </resources>
