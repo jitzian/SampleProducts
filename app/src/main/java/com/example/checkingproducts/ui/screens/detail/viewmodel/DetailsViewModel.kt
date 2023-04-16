@@ -18,12 +18,16 @@ class DetailsViewModel @Inject constructor(
     private val _state = MutableStateFlow(UIState())
     val state = _state.asStateFlow()
 
+    /**
+     * Function that retrieves a product from DB by id [id]
+     * */
     fun findProductByIdRoom(id: Int) = viewModelScope.launch(Dispatchers.IO) {
         productRepository.findProductByIdRoom(id).collect { product ->
             _state.value = UIState(product)
         }
     }
 
+    //UIState
     data class UIState(val data: ProductEntityDB? = null)
 
 }
