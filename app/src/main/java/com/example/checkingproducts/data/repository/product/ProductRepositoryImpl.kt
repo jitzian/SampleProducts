@@ -5,12 +5,20 @@ import com.example.checkingproducts.data.db.ProductsDB
 import com.example.checkingproducts.data.db.dao.ProductDao
 import com.example.checkingproducts.data.db.entities.ProductEntityDB
 import com.example.checkingproducts.data.domain.repository.product.ProductRepository
+import com.example.checkingproducts.data.remote.RestApi
+import com.example.checkingproducts.data.remote.model.ProductsItem
 import javax.inject.Inject
 
-class ProductRepositoryImpl @Inject constructor(context: Application) : ProductRepository {
+//class ProductRepositoryImpl @Inject constructor(context: Application) : ProductRepository {
+class ProductRepositoryImpl @Inject constructor(
+    context: Application,
+    private val restApi: RestApi
+) : ProductRepository {
 
     private val db = ProductsDB.getInstance(context)
     private var productDao: ProductDao = db.productDao()
+    override suspend fun getProducts() = restApi.getProducts()
+
     override suspend fun addProductRoom(product: ProductEntityDB) = productDao.addProduct(product)
 
     override fun findProductByIdRoom(id: Int) = productDao.findProductById(id)
