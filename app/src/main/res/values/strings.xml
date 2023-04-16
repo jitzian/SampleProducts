@@ -5,4 +5,6 @@
     <string name="products_TEXT">Products</string>
     <string name="scroll_up_TEXT">Scroll up</string>
     <string name="scroll_down_TEXT">Scroll down</string>
+    <string name="favorite_TEXT">Favorite</string>
+    <string name="not_favorite_TEXT">Not Favorite</string>
 </resources>
