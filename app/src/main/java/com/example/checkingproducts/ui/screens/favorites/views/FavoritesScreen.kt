@@ -8,7 +8,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.checkingproducts.R
 import com.example.checkingproducts.data.db.entities.ProductEntityDB
 import com.example.checkingproducts.ui.app.ProductsAppScreen
 import com.example.checkingproducts.ui.common.LoadingScreen
@@ -20,6 +22,7 @@ import com.example.checkingproducts.ui.screens.favorites.viewmodel.FavoritesView
 fun FavoritesScreenState(favoritesViewModel: FavoritesViewModel = hiltViewModel()) {
     val state by favoritesViewModel.state.collectAsState()
     favoritesViewModel.getFavorites()
+
     if (state.isLoading) {
         LoadingScreen()
     } else {
@@ -35,11 +38,11 @@ fun FavoritesScreen(data: List<ProductEntityDB>) {
 
     ProductsAppScreen {
         Scaffold(topBar = {
-            MainTopBar(barTitle = "Favorites")
+            MainTopBar(barTitle = stringResource(id = R.string.favorites_TEXT))
         }) {
             LazyColumn(state = state) {
                 items(data) { item ->
-                    FavoritesItemsRow(data = item)
+                    FavoritesItemsRow(data = item, showFavoriteIcon = true)
                 }
             }
             ScrollFloatingButton(state = state, coroutineScope = coroutineScope, data = data)
