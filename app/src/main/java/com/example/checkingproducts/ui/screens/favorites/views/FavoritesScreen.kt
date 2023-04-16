@@ -13,6 +13,7 @@ import com.example.checkingproducts.data.db.entities.ProductEntityDB
 import com.example.checkingproducts.ui.app.ProductsAppScreen
 import com.example.checkingproducts.ui.common.LoadingScreen
 import com.example.checkingproducts.ui.common.MainTopBar
+import com.example.checkingproducts.ui.common.ScrollFloatingButton
 import com.example.checkingproducts.ui.screens.favorites.viewmodel.FavoritesViewModel
 
 @Composable
@@ -41,7 +42,7 @@ fun FavoritesScreen(data: List<ProductEntityDB>) {
                     FavoritesItemsRow(data = item)
                 }
             }
-            //ScrollFloatingButton(state = state, coroutineScope = coroutineScope, data = data)
+            ScrollFloatingButton(state = state, coroutineScope = coroutineScope, data = data)
         }
     }
 
