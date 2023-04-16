@@ -14,7 +14,7 @@ import com.example.checkingproducts.data.db.entities.ProductEntityDB
 import com.example.checkingproducts.ui.app.ProductsAppScreen
 import com.example.checkingproducts.ui.common.MainTopBar
 import com.example.checkingproducts.ui.screens.detail.viewmodel.DetailsViewModel
-import com.example.checkingproducts.ui.screens.favorites.views.FavoritesItemsRow
+import com.example.checkingproducts.ui.common.FavoritesItemsRow
 
 @Composable
 fun DetailsScreenState(

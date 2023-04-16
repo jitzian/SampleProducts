@@ -13,6 +13,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.checkingproducts.R
 import com.example.checkingproducts.data.db.entities.ProductEntityDB
 import com.example.checkingproducts.ui.app.ProductsAppScreen
+import com.example.checkingproducts.ui.common.FavoritesItemsRow
 import com.example.checkingproducts.ui.common.LoadingScreen
 import com.example.checkingproducts.ui.common.MainTopBar
 import com.example.checkingproducts.ui.common.ScrollFloatingButton

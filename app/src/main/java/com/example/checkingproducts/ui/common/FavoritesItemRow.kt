@@ -1,4 +1,4 @@
-package com.example.checkingproducts.ui.screens.favorites.views
+package com.example.checkingproducts.ui.common
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
