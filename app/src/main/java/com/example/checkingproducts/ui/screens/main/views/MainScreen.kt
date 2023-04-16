@@ -35,7 +35,6 @@ fun MainScreenState(
     if (state.isLoading) {
         LoadingScreen()
     } else {
-        //MainScreen(data = state.data, navigateToDetails = navigateToDetails)
         MainScreen(
             data = state.data,
             updateProduct = mainViewModel::updateProduct,
@@ -46,7 +45,6 @@ fun MainScreenState(
 
 @ExperimentalFoundationApi
 @Composable
-//fun MainScreen(data: List<ProductEntityDB>, navigateToDetails: (Int) -> Unit) {
 fun MainScreen(
     data: List<ProductEntityDB>,
     updateProduct: (ProductEntityDB) -> Unit,
