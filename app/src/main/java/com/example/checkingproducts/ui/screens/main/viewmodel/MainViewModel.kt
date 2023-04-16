@@ -46,6 +46,22 @@ class MainViewModel @Inject constructor(
             _state.value = UIState(data = products)
         }
     }
+    /**
+     * Function that updates the favorite status of a product
+     * [product]: Product to update
+     * */
+    fun updateProduct(product: ProductEntityDB) = viewModelScope.launch(Dispatchers.IO) {
+        val productToUpdate = ProductEntityDB(
+            id = product.id,
+            current_value = product.current_value,
+            description = product.description,
+            name = product.name,
+            terms = product.terms,
+            url = product.url,
+            isFavorite = product.isFavorite.not()
+        )
+        productRepository.updateProductRoom(productToUpdate)
+    }
 
     //UIState used to manage the data in UI level
     data class UIState(
