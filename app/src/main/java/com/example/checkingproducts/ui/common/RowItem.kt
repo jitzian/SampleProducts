@@ -40,7 +40,7 @@ fun RowItem(
             .clickable {
                 onItemClick.invoke(data.id)
             },
-        elevation = dimensionResource(id = R.dimen.dimen_4_dp)
+        elevation = dimensionResource(id = R.dimen.dimen_2_dp)
     ) {
         Column(
             modifier = Modifier
