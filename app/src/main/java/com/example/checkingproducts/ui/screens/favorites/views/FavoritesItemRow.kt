@@ -29,9 +29,7 @@ import coil.compose.rememberImagePainter
 import com.example.checkingproducts.R
 import com.example.checkingproducts.data.db.entities.ProductEntityDB
 
-
 @Composable
-//fun FavoritesItemsRow(data: ProductEntityDB) {
 fun FavoritesItemsRow(data: ProductEntityDB, showFavoriteIcon: Boolean = false) {
     Card(
         modifier = Modifier
@@ -74,7 +72,6 @@ fun FavoritesItemsRow(data: ProductEntityDB, showFavoriteIcon: Boolean = false) 
                     ) {
                         if (showFavoriteIcon) {
                             Icon(
-                                //imageVector = Icons.Default.FavoriteBorder,
                                 imageVector = if (data.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                                 contentDescription = null
                             )
