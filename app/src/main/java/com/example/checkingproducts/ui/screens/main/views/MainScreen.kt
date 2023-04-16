@@ -18,7 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.checkingproducts.R
-import com.example.checkingproducts.data.remote.model.ProductsItem
+import com.example.checkingproducts.data.db.entities.ProductEntityDB
 import com.example.checkingproducts.ui.app.ProductsAppScreen
 import com.example.checkingproducts.ui.common.LoadingScreen
 import com.example.checkingproducts.ui.common.MainTopBar
@@ -41,7 +41,7 @@ fun MainScreenState(
 
 @ExperimentalFoundationApi
 @Composable
-fun MainScreen(data: List<ProductsItem>, navigateToDetails: (Int) -> Unit) {
+fun MainScreen(data: List<ProductEntityDB>, navigateToDetails: (Int) -> Unit) {
 
     val state = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
