@@ -1,6 +1,7 @@
 package com.example.checkingproducts.ui.common
 
 import android.util.Log
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -28,7 +29,11 @@ import com.example.checkingproducts.data.remote.model.ProductsItem
 
 @Composable
 //fun RowItem(data: ProductsItem, onItemClick: (Int) -> Unit) {
-fun RowItem(data: ProductEntityDB, onItemClick: (Int) -> Unit) {
+fun RowItem(
+    data: ProductEntityDB,
+    onItemClick: (Int) -> Unit,
+    updateProduct: (ProductEntityDB) -> Unit
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -68,6 +73,7 @@ fun RowItem(data: ProductEntityDB, onItemClick: (Int) -> Unit) {
                     modifier = Modifier.clickable {
                         Log.e("RowItem", "RowItem: ${data.name}, ${data.isFavorite}")
                         //TODO: Implement update of the favorite field in DB
+                        updateProduct.invoke(data)
                     },
                     contentDescription = if (data.isFavorite) {
                         stringResource(id = R.string.favorite_TEXT)
@@ -102,6 +108,7 @@ fun PrevRowItem() {
             terms = "Rebate valid on Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges for any variety, 2 ct. pack or larger.",
             url = "https://product-images.ibotta.com/offer/dUxYcQPeq391-DiywFZF8g-normal.png"
         ),
-        onItemClick = {}
+        onItemClick = {},
+        updateProduct = {}
     )
 }
