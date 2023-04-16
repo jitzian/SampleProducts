@@ -17,7 +17,7 @@ import kotlin.time.Duration.Companion.seconds
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val productsRepository: ProductsRepository,
+    //private val productsRepository: ProductsRepository,
     private val productRepository: ProductRepository
 ) : ViewModel() {
 
@@ -35,7 +35,7 @@ class MainViewModel @Inject constructor(
         _state.value = UIState(true)
         //Used to show the loading screen
         delay(2.seconds)
-        val remoteProducts = productsRepository.getProducts()
+        val remoteProducts = productRepository.getProducts()
         if (remoteProducts.isNotEmpty()) {
             remoteProducts.forEach { product ->
                 productRepository.addProductRoom(product.toProductEntityDB())
