@@ -54,7 +54,7 @@ fun FavoritesItemsRow(data: ProductEntityDB, showFavoriteIcon: Boolean = false) 
                 Image(
                     painter = rememberImagePainter(data = data.url),
                     contentDescription = null,
-                    contentScale = ContentScale.Crop,
+                    contentScale = ContentScale.Fit,
                     modifier = Modifier
                         .width(140.dp)
                         .height(140.dp)
