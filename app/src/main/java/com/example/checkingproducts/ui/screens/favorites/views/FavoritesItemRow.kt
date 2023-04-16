@@ -31,7 +31,8 @@ import com.example.checkingproducts.data.db.entities.ProductEntityDB
 
 
 @Composable
-fun FavoritesItemsRow(data: ProductEntityDB) {
+//fun FavoritesItemsRow(data: ProductEntityDB) {
+fun FavoritesItemsRow(data: ProductEntityDB, showFavoriteIcon: Boolean = false) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -71,11 +72,13 @@ fun FavoritesItemsRow(data: ProductEntityDB) {
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.End
                     ) {
-                        Icon(
-                            //imageVector = Icons.Default.FavoriteBorder,
-                            imageVector = if (data.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                            contentDescription = null
-                        )
+                        if (showFavoriteIcon) {
+                            Icon(
+                                //imageVector = Icons.Default.FavoriteBorder,
+                                imageVector = if (data.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                                contentDescription = null
+                            )
+                        }
                     }
                     Text(
                         modifier = Modifier.fillMaxWidth(),
@@ -140,5 +143,39 @@ fun PrevFavoritesIsNotFavItemsRow() {
             url = "https://product-images.ibotta.com/offer/OS0MnVcHXe7snozDC7nIiw-normal.png",
             isFavorite = true
         )
+    )
+}
+
+@Preview
+@Composable
+fun PrevFavoritesIsFavItemsRowAndShowFav() {
+    FavoritesItemsRow(
+        data = ProductEntityDB(
+            id = 110580,
+            current_value = "\$0.75 Cash Back",
+            description = "Any variety - 2 ct. pack or larger",
+            name = "Scotch-Brite® Scrub Dots Heavy Duty Scrub Sponges",
+            terms = "Rebate valid on Scotch-Brite® Scrub Dots Heavy Duty Scrub Sponges for any variety, 2 ct. pack or larger.",
+            url = "https://product-images.ibotta.com/offer/OS0MnVcHXe7snozDC7nIiw-normal.png",
+            isFavorite = false
+        ),
+        showFavoriteIcon = true
+    )
+}
+
+@Preview
+@Composable
+fun PrevFavoritesIsNotFavItemsRowAndShowFav() {
+    FavoritesItemsRow(
+        data = ProductEntityDB(
+            id = 110580,
+            current_value = "\$0.75 Cash Back",
+            description = "Any variety - 2 ct. pack or larger",
+            name = "Scotch-Brite® Scrub Dots Heavy Duty Scrub Sponges",
+            terms = "Rebate valid on Scotch-Brite® Scrub Dots Heavy Duty Scrub Sponges for any variety, 2 ct. pack or larger.",
+            url = "https://product-images.ibotta.com/offer/OS0MnVcHXe7snozDC7nIiw-normal.png",
+            isFavorite = true
+        ),
+        showFavoriteIcon = true
     )
 }
