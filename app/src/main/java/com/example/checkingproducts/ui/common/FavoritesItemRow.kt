@@ -56,8 +56,8 @@ fun FavoritesItemsRow(data: ProductEntityDB, showFavoriteIcon: Boolean = false) 
                     contentDescription = null,
                     contentScale = ContentScale.Fit,
                     modifier = Modifier
-                        .width(140.dp)
-                        .height(140.dp)
+                        .width(dimensionResource(id = R.dimen.dimen_140_dp))
+                        .height(dimensionResource(id = R.dimen.dimen_140_dp))
                         .clip(RoundedCornerShape(dimensionResource(id = R.dimen.dimen_8_dp)))
                 )
                 Column(
