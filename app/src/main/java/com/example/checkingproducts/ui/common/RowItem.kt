@@ -1,12 +1,9 @@
 package com.example.checkingproducts.ui.common
 
-import android.util.Log
-import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Card
@@ -25,10 +22,8 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.checkingproducts.R
 import com.example.checkingproducts.data.db.entities.ProductEntityDB
-import com.example.checkingproducts.data.remote.model.ProductsItem
 
 @Composable
-//fun RowItem(data: ProductsItem, onItemClick: (Int) -> Unit) {
 fun RowItem(
     data: ProductEntityDB,
     onItemClick: (Int) -> Unit,
@@ -70,11 +65,7 @@ fun RowItem(
                 Spacer(modifier = Modifier.weight(1f))
                 Icon(
                     imageVector = if (data.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                    modifier = Modifier.clickable {
-                        Log.e("RowItem", "RowItem: ${data.name}, ${data.isFavorite}")
-                        //TODO: Implement update of the favorite field in DB
-                        updateProduct.invoke(data)
-                    },
+                    modifier = Modifier.clickable { updateProduct.invoke(data) },
                     contentDescription = if (data.isFavorite) {
                         stringResource(id = R.string.favorite_TEXT)
                     } else stringResource(

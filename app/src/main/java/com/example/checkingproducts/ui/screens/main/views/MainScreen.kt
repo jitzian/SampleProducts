@@ -35,13 +35,23 @@ fun MainScreenState(
     if (state.isLoading) {
         LoadingScreen()
     } else {
-        MainScreen(data = state.data, navigateToDetails = navigateToDetails)
+        //MainScreen(data = state.data, navigateToDetails = navigateToDetails)
+        MainScreen(
+            data = state.data,
+            updateProduct = mainViewModel::updateProduct,
+            navigateToDetails = navigateToDetails
+        )
     }
 }
 
 @ExperimentalFoundationApi
 @Composable
-fun MainScreen(data: List<ProductEntityDB>, navigateToDetails: (Int) -> Unit) {
+//fun MainScreen(data: List<ProductEntityDB>, navigateToDetails: (Int) -> Unit) {
+fun MainScreen(
+    data: List<ProductEntityDB>,
+    updateProduct: (ProductEntityDB) -> Unit,
+    navigateToDetails: (Int) -> Unit
+) {
 
     val state = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
@@ -57,7 +67,11 @@ fun MainScreen(data: List<ProductEntityDB>, navigateToDetails: (Int) -> Unit) {
                     contentPadding = PaddingValues(4.dp)
                 ) {
                     items(data) { item ->
-                        RowItem(data = item, onItemClick = navigateToDetails)
+                        RowItem(
+                            data = item,
+                            onItemClick = navigateToDetails,
+                            updateProduct = updateProduct
+                        )
                     }
                 }
             }
