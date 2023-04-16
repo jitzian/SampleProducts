@@ -5,13 +5,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.checkingproducts.data.db.entities.ProductEntityDB
 import com.example.checkingproducts.data.domain.repository.product.ProductRepository
 import com.example.checkingproducts.data.domain.repository.services.offline.toProductEntityDB
-import com.example.checkingproducts.data.remote.model.ProductsItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.time.Duration.Companion.seconds
@@ -40,12 +38,12 @@ class MainViewModel @Inject constructor(
             remoteProducts.forEach { product ->
                 productRepository.addProductRoom(product.toProductEntityDB())
             }
-            //_state.value = UIState(data = remoteProducts)
         }
         productRepository.getAllProductsRoom().collect { products ->
             _state.value = UIState(data = products)
         }
     }
+
     /**
      * Function that updates the favorite status of a product
      * [product]: Product to update
@@ -66,7 +64,6 @@ class MainViewModel @Inject constructor(
     //UIState used to manage the data in UI level
     data class UIState(
         val isLoading: Boolean = false,
-        //val data: List<ProductsItem> = emptyList()
         val data: List<ProductEntityDB> = emptyList()
     )
 
