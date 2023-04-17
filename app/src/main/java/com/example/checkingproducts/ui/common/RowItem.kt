@@ -90,9 +90,26 @@ fun RowItem(
 
 @Preview(showBackground = true)
 @Composable
-fun PrevRowItem() {
+fun PrevRowItemFav() {
     RowItem(
-        //data = ProductsItem(
+        data = ProductEntityDB(
+            current_value = "\$0.75 Cash Back",
+            description = "Any variety - 2 ct. pack or larger",
+            id = 110579,
+            name = "Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges",
+            terms = "Rebate valid on Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges for any variety, 2 ct. pack or larger.",
+            url = "https://product-images.ibotta.com/offer/dUxYcQPeq391-DiywFZF8g-normal.png",
+            isFavorite = true
+        ),
+        onItemClick = {},
+        updateProduct = {}
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PrevRowItemNotFav() {
+    RowItem(
         data = ProductEntityDB(
             current_value = "\$0.75 Cash Back",
             description = "Any variety - 2 ct. pack or larger",
