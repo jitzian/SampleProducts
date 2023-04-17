@@ -30,61 +30,47 @@ fun RowItem(
     onItemClick: (Int) -> Unit,
     updateProduct: (ProductEntityDB) -> Unit
 ) {
-    Card(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
-            .semantics(mergeDescendants = true) {}
             .padding(
-                horizontal = dimensionResource(id = R.dimen.dimen_16_dp),
-                vertical = dimensionResource(id = R.dimen.dimen_8_dp)
+                start = dimensionResource(id = R.dimen.dimen_8_dp),
+                top = dimensionResource(id = R.dimen.dimen_24_dp),
+                end = dimensionResource(id = R.dimen.dimen_8_dp)
             )
-            .clickable {
-                onItemClick.invoke(data.id)
-            },
-        elevation = dimensionResource(id = R.dimen.dimen_2_dp)
+            .clickable { onItemClick.invoke(data.id) }
     ) {
-        Column(
+        ProductImage(name = data.name, url = data.url)
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(
-                    start = dimensionResource(id = R.dimen.dimen_8_dp),
-                    top = dimensionResource(id = R.dimen.dimen_24_dp),
-                    end = dimensionResource(id = R.dimen.dimen_8_dp)
-                )
+                .padding(top = dimensionResource(id = R.dimen.dimen_8_dp)),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            ProductImage(name = data.name, url = data.url)
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = dimensionResource(id = R.dimen.dimen_8_dp)),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = data.current_value,
-                    style = MaterialTheme.typography.caption
-                )
-                Spacer(modifier = Modifier.weight(1f))
-                Icon(
-                    imageVector = if (data.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                    modifier = Modifier.clickable { updateProduct.invoke(data) },
-                    contentDescription = if (data.isFavorite) {
-                        stringResource(id = R.string.favorite_TEXT)
-                    } else stringResource(
-                        id = R.string.not_favorite_TEXT
-                    ),
-                    tint = if (data.isFavorite) Color.Red else Color.Black
-                )
-            }
             Text(
-                text = data.name,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = dimensionResource(id = R.dimen.dimen_8_dp)),
-                style = MaterialTheme.typography.overline,
-                maxLines = 1
+                text = data.current_value,
+                style = MaterialTheme.typography.caption
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            Icon(
+                imageVector = if (data.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                modifier = Modifier.clickable { updateProduct.invoke(data) },
+                contentDescription = if (data.isFavorite) {
+                    stringResource(id = R.string.favorite_TEXT)
+                } else stringResource(
+                    id = R.string.not_favorite_TEXT
+                ),
+                tint = if (data.isFavorite) Color.Red else Color.Black
             )
         }
-
+        Text(
+            text = data.name,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = dimensionResource(id = R.dimen.dimen_8_dp)),
+            style = MaterialTheme.typography.overline,
+            maxLines = 1
+        )
     }
 }
 
