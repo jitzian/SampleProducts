@@ -6,10 +6,8 @@ import com.example.checkingproducts.data.db.dao.ProductDao
 import com.example.checkingproducts.data.db.entities.ProductEntityDB
 import com.example.checkingproducts.data.domain.repository.product.ProductRepository
 import com.example.checkingproducts.data.remote.RestApi
-import com.example.checkingproducts.data.remote.model.ProductsItem
 import javax.inject.Inject
 
-//class ProductRepositoryImpl @Inject constructor(context: Application) : ProductRepository {
 class ProductRepositoryImpl @Inject constructor(
     context: Application,
     private val restApi: RestApi
