@@ -11,4 +11,9 @@
     <string name="there_is_no_data_TEXT">There is no data</string>
     <string name="remove_from_favorites_TEXT">Remove from favorites</string>
     <string name="add_to_favorites_TEXT">Add to favorites</string>
+
+    <!--Testing tags: ArrowBackIcon-->
+    <string name="arrowBackIcon_iconButton_test_TAG">arrowBackIcon_iconButton_test_TAG</string>
+    <string name="arrowBackIcon_text_back_test_TAG">arrowBackIcon_text_back_test_TAG</string>
+
 </resources>
