@@ -9,4 +9,6 @@
     <string name="favorites_TEXT">Favorites</string>
     <string name="not_favorite_TEXT">Not Favorite</string>
     <string name="there_is_no_data_TEXT">There is no data</string>
+    <string name="remove_from_favorites_TEXT">Remove from favorites</string>
+    <string name="add_to_favorites_TEXT">Add to favorites</string>
 </resources>

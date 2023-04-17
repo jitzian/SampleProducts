@@ -16,6 +16,7 @@ import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
@@ -71,6 +72,7 @@ fun RowItem(
                     } else stringResource(
                         id = R.string.not_favorite_TEXT
                     ),
+                    tint = if (data.isFavorite) Color.Red else Color.Black
                 )
             }
             Text(

@@ -20,11 +20,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.example.checkingproducts.R
 import com.example.checkingproducts.data.db.entities.ProductEntityDB
@@ -73,7 +74,12 @@ fun FavoritesItemsRow(data: ProductEntityDB, showFavoriteIcon: Boolean = false) 
                         if (showFavoriteIcon) {
                             Icon(
                                 imageVector = if (data.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                                contentDescription = null
+                                contentDescription = if (data.isFavorite) {
+                                    stringResource(id = R.string.remove_from_favorites_TEXT)
+                                } else {
+                                    stringResource(id = R.string.add_to_favorites_TEXT)
+                                },
+                                tint = if (data.isFavorite) Color.Red else Color.Black,
                             )
                         }
                     }
