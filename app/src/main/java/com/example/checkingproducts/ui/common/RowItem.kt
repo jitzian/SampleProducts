@@ -30,47 +30,61 @@ fun RowItem(
     onItemClick: (Int) -> Unit,
     updateProduct: (ProductEntityDB) -> Unit
 ) {
-    Column(
+    Card(
         modifier = Modifier
             .fillMaxWidth()
+            .semantics(mergeDescendants = true) {}
             .padding(
-                start = dimensionResource(id = R.dimen.dimen_8_dp),
-                top = dimensionResource(id = R.dimen.dimen_24_dp),
-                end = dimensionResource(id = R.dimen.dimen_8_dp)
+                horizontal = dimensionResource(id = R.dimen.dimen_16_dp),
+                vertical = dimensionResource(id = R.dimen.dimen_8_dp)
             )
-            .clickable { onItemClick.invoke(data.id) }
+            .clickable {
+                onItemClick.invoke(data.id)
+            },
+        elevation = dimensionResource(id = R.dimen.dimen_2_dp)
     ) {
-        ProductImage(name = data.name, url = data.url)
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = dimensionResource(id = R.dimen.dimen_8_dp)),
-            verticalAlignment = Alignment.CenterVertically
+                .padding(
+                    start = dimensionResource(id = R.dimen.dimen_8_dp),
+                    top = dimensionResource(id = R.dimen.dimen_24_dp),
+                    end = dimensionResource(id = R.dimen.dimen_8_dp)
+                )
+                .clickable { onItemClick.invoke(data.id) }
         ) {
+            ProductImage(name = data.name, url = data.url)
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = dimensionResource(id = R.dimen.dimen_8_dp)),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = data.current_value,
+                    style = MaterialTheme.typography.caption
+                )
+                Spacer(modifier = Modifier.weight(1f))
+                Icon(
+                    imageVector = if (data.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                    modifier = Modifier.clickable { updateProduct.invoke(data) },
+                    contentDescription = if (data.isFavorite) {
+                        stringResource(id = R.string.favorite_TEXT)
+                    } else stringResource(
+                        id = R.string.not_favorite_TEXT
+                    ),
+                    tint = if (data.isFavorite) Color.Red else Color.Black
+                )
+            }
             Text(
-                text = data.current_value,
-                style = MaterialTheme.typography.caption
-            )
-            Spacer(modifier = Modifier.weight(1f))
-            Icon(
-                imageVector = if (data.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                modifier = Modifier.clickable { updateProduct.invoke(data) },
-                contentDescription = if (data.isFavorite) {
-                    stringResource(id = R.string.favorite_TEXT)
-                } else stringResource(
-                    id = R.string.not_favorite_TEXT
-                ),
-                tint = if (data.isFavorite) Color.Red else Color.Black
+                text = data.name,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = dimensionResource(id = R.dimen.dimen_8_dp)),
+                style = MaterialTheme.typography.overline,
+                maxLines = 1
             )
         }
-        Text(
-            text = data.name,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = dimensionResource(id = R.dimen.dimen_8_dp)),
-            style = MaterialTheme.typography.overline,
-            maxLines = 1
-        )
     }
 }
 
